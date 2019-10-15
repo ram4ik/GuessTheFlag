@@ -9,18 +9,26 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var showingAlert = false
     var body: some View {
 //        LinearGradient(gradient: Gradient(colors: [.white, .gray, .green]), startPoint: .top, endPoint: .bottom)
 //        RadialGradient(gradient: Gradient(colors: [.blue, .black]), center: .center, startRadius: 20, endRadius: 200)
 //        AngularGradient(gradient: Gradient(colors: [.red, .yellow, .green, .blue, .purple, .orange, .pink]), center: .center)
         
-        Button(action: {
-            print("Button was tapped")
-        }) {
-            HStack(spacing: 10) {
-                Image(systemName: "pencil")
-                Text("Edit")
-            }
+//        Button(action: {
+//            print("Button was tapped")
+//        }) {
+//            HStack(spacing: 10) {
+//                Image(systemName: "pencil")
+//                Text("Edit")
+//            }
+//        }
+        
+        Button("Show Alert") {
+            self.showingAlert = true
+        }
+        .alert(isPresented: $showingAlert) {
+            Alert(title: Text("SwiftUI"), message: Text("This is some detail message"), dismissButton: .default(Text("OK")))
         }
     }
 }
