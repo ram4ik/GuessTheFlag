@@ -9,26 +9,30 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var showingAlert = false
+    var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"]
+    var correctAnswer = Int.random(in: 0...2)
+    
     var body: some View {
-//        LinearGradient(gradient: Gradient(colors: [.white, .gray, .green]), startPoint: .top, endPoint: .bottom)
-//        RadialGradient(gradient: Gradient(colors: [.blue, .black]), center: .center, startRadius: 20, endRadius: 200)
-//        AngularGradient(gradient: Gradient(colors: [.red, .yellow, .green, .blue, .purple, .orange, .pink]), center: .center)
-        
-//        Button(action: {
-//            print("Button was tapped")
-//        }) {
-//            HStack(spacing: 10) {
-//                Image(systemName: "pencil")
-//                Text("Edit")
-//            }
-//        }
-        
-        Button("Show Alert") {
-            self.showingAlert = true
-        }
-        .alert(isPresented: $showingAlert) {
-            Alert(title: Text("SwiftUI"), message: Text("This is some detail message"), dismissButton: .default(Text("OK")))
+        ZStack {
+            Color.blue.edgesIgnoringSafeArea(.all)
+            
+            VStack {
+                Text("Tap the flag of")
+                .foregroundColor(.white)
+                Text(countries[correctAnswer])
+                .foregroundColor(.white)
+            }
+            
+            ForEach(0 ..< 3) { number in
+                Button(action: {
+                   // flag was tapped
+                }) {
+                    Image(self.countries[number])
+                        .renderingMode(.original)
+                }
+            }
+            
+            Spacer()
         }
     }
 }
