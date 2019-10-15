@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello World")
+        LinearGradient(gradient: Gradient(colors: [.white, .gray, .green]), startPoint: .top, endPoint: .bottom)
     }
 }
 
