@@ -9,6 +9,11 @@
 import SwiftUI
 
 struct ContentView: View {
+    let labels = [
+        "Estonia" : "Flag with three horizontal stripes of equel size. Top strips blue, middle stripe black, bottom stripe white",
+        // more flag description here
+    ]
+    
     @State private var showingScore = false
     @State private var scoreTitle = ""
     
@@ -41,6 +46,7 @@ struct ContentView: View {
                             .clipShape(Capsule())
                             .overlay(Capsule().stroke(Color.black, lineWidth: 1))
                             .shadow(color: .black, radius: 2)
+                            .accessibility(label: Text(self.labels[self.countries[number], default: "Unknown flag"]))
                     }
                 }
                 
